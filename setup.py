@@ -12,8 +12,6 @@ def get_requirements(file_path: str) -> List[str]:
         data = [word for word in data if word != '-e .']
 
     return data 
-        
-
 
 setup(
     name='mlproject',
