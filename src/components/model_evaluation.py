@@ -1,90 +1,59 @@
 import numpy as np          
 import pandas as pd   
 import sys
+import os
 
 from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import get_logger
+from src.utils import save_object
 
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
 logger = get_logger('Model Evaluation')
 
+@dataclass
+class ModelEvaluationConfig:
+    model_path: str = os.path.join('model', 'model.pkl')
+
 class ModelEvaluation:
-    def __init__(self, models):
-        self.models = models
+    def __init__(self):
+        self.model_eval_config = ModelEvaluationConfig()
 
-    def train_evaluation(self, X_train, y_train):
-        logger.info('Training Evaluation Started')
-
-        model_train_evaluation = {}
-
-        for model_name, model in self.models.items():
-            logger.info(f'Started Evaluation For {model_name}')
-            model = model
+    def evaluate(self, X_train, X_test, y_train, y_test, models):
+        try:
+            model_score = {}
             
-            try:
-                y_pred_train = model.predict(X_train)
-
-            except Exception as e:
-                logger.error(e)
-                raise CustomException(e, sys)
-
-            try:   
-                mse = mean_squared_error(y_train, y_pred_train)
-                mae = mean_absolute_error(y_train, y_pred_train)
-                rmse = np.sqrt(mse)
-                r2 = r2_score(y_train, y_pred_train)
-
-            except Exception as e:
-                logger.error(e)
-                raise CustomException(e, sys)
-
-            model_train_evaluation[model_name] = {
-                'mse' : mse,
-                'mae' : mae,
-                'rmse' : rmse,
-                'r2' : r2
-            }
-        
-        logger.info('Training Evaluation Completed')
-
-        return model_train_evaluation
-
-    def test_evaluation(self, X_test, y_test):
-        logger.info('Testing Evaluation Started')
-
-        model_test_evaluation = {}
-
-        for model_name, model in self.models.items():
-            logger.info(f'Started Evaluation For {model_name}')
-            model = model
-            
-            try:
+            logger.info('Evaluating Models Performance')
+            for mod_name, mod in models.items():
+                model = mod
                 y_pred_test = model.predict(X_test)
 
-            except Exception as e:
-                logger.error(e)
-                raise CustomException(e, sys)
-
-            try:   
-                mse = mean_squared_error(y_test, y_pred_test)
-                mae = mean_absolute_error(y_test, y_pred_test)
-                rmse = np.sqrt(mse)
                 r2 = r2_score(y_test, y_pred_test)
 
-            except Exception as e:
-                logger.error(e)
-                raise CustomException(e, sys)
+                model_score[mod_name] = r2
 
-            model_test_evaluation[model_name] = {
-                'mse' : mse,
-                'mae' : mae,
-                'rmse' : rmse,
-                'r2' : r2
-            }
-        
-        logger.info('Testing Evaluation Completed')
+            best_model_score = max(sorted(list(model_score.values())))
 
-        return model_test_evaluation
+            best_model_name = list(model_score.keys())[
+                list(model_score.values()).index(best_model_score)
+            ]
+
+            if best_model_score < 0.6:
+                raise CustomException('Best Model Not Found', sys)
+            
+            logger.info('Saving Best Model')
+            save_object(
+                file_path=self.model_eval_config.model_path,
+                model=models[best_model_name]
+            )
+            
+            print(f'Best Model -> {best_model_name} -> Score: {best_model_score}')
+            logger.info('Model Evaluation Completed')
+
+        except Exception as e:
+            logger.error(e)
+            raise CustomException(e, sys)
+
+

@@ -1,6 +1,7 @@
 import numpy as np           
 import pandas as pd    
 import sys
+import os
 
 from dataclasses import dataclass
 
@@ -22,6 +23,7 @@ class ModelConfig:
     k_nearest_neighbors: KNeighborsRegressor = KNeighborsRegressor()
     decision_tree: DecisionTreeRegressor = DecisionTreeRegressor()
     random_forest_regressor: RandomForestRegressor = RandomForestRegressor()
+    
 
 class ModelTrainer:
     def __init__(self, X_train, X_test, y_train, y_test):
@@ -40,52 +42,32 @@ class ModelTrainer:
         try:
             lr_model = self.model_config.linear_regression
             lr_model.fit(self.X_train, self.y_train)
-
-        except Exception as e:
-            logger.error(e)
-            raise CustomException(e, sys)
         
-        #! Support Vector Regressor
-        logger.info('Training Support Vector Regressor')
-        try:
+            #! Support Vector Regressor
+            logger.info('Training Support Vector Regressor')
             svr_model = self.model_config.support_vector_regressor
             svr_model.fit(self.X_train, self.y_train)
-
-        except Exception as e:
-            logger.error(e)
-            raise CustomException(e, sys)
         
-        #! K-Nearest Neighbor
-        logger.info('Training K-Nearest Neighbor')
-        try:
+            #! K-Nearest Neighbor
+            logger.info('Training K-Nearest Neighbor')
             knn_model = self.model_config.k_nearest_neighbors
             knn_model.fit(self.X_train, self.y_train)
-
-        except Exception as e:
-            logger.error(e)
-            raise CustomException(e, sys)
         
-        #! Decision Tree
-        logger.info('Training Decision Tree')
-        try:
+            #! Decision Tree
+            logger.info('Training Decision Tree')
             dtree_model = self.model_config.decision_tree
             dtree_model.fit(self.X_train, self.y_train)
-
-        except Exception as e:
-            logger.error(e)
-            raise CustomException(e, sys)
         
-        #! Random Forest
-        logger.info('Training Random Forest')
-        try:
+            #! Random Forest
+            logger.info('Training Random Forest')
             rf_model = self.model_config.random_forest_regressor
             rf_model.fit(self.X_train, self.y_train)
+        
+            logger.info('Model Training Completed')
 
         except Exception as e:
             logger.error(e)
             raise CustomException(e, sys)
-        
-        logger.info('Model Training Completed')
 
         return {
             'linear regression' : lr_model,

@@ -40,13 +40,10 @@ def training_pipeline():
     logger.info('Model Evaluation Initialized')
     #? Model Evaluation Initialized
 
-    model_evaluate = ModelEvaluation(trained_models)
+    model_evaluate = ModelEvaluation()
 
-    training_evaluations = model_evaluate.train_evaluation(X_train, y_train)
-    testing_evaluations = model_evaluate.test_evaluation(X_test, y_test)
-
-    print(f'Training Evaluations: {training_evaluations}')
-    print(f'Testing Evaluations: {testing_evaluations}')
+    #Start Evaluating and gives us best model
+    model_evaluate.evaluate(X_train, X_test, y_train, y_test, trained_models)
 
     logger.info('Pipeline Completed')
 

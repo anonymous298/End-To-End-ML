@@ -8,7 +8,7 @@ from dataclasses import dataclass
 
 from src.exception import CustomException
 from src.logger import get_logger
-from src.utils import save_object, make_column
+from src.utils import save_object, create_column
 
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from sklearn.impute import SimpleImputer
@@ -37,7 +37,7 @@ class DataPreprocessing:
 
             logger.info('Splitting data into dependent and Independent')
             
-            train_data, test_data = make_column(train_data, test_data)
+            train_data, test_data = create_column(train_data, test_data)
 
             DEPENDENT_FEATURE = 'total_score'
 
@@ -82,7 +82,7 @@ class DataPreprocessing:
             steps=[
                 ('imputer', SimpleImputer(strategy='most_frequent')),
                 ('ohe', OneHotEncoder()),
-                ('scaler', StandardScaler())
+                # ('scaler', StandardScaler())
             ]
         )
 

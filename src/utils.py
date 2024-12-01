@@ -11,7 +11,7 @@ def save_object(file_path, model):
     '''
     this function is meant to save our model object to specific file path
     '''
-    logger.info(f'Saving {model} to {file_path}')
+    logger.info(f'Saving Model')
 
     try:
         
@@ -29,8 +29,8 @@ def save_object(file_path, model):
 def create_column(train_data, test_data):
     COL_NAME = 'total_score'
 
-    train_data[COL_NAME] = train_data['math score'] + train_data['reading_score'] + train_data['writing_score']
-    test_data[COL_NAME] = test_data['math score'] + test_data['reading_score'] + test_data['writing_score']
+    train_data[COL_NAME] = train_data['math score'] + train_data['reading score'] + train_data['writing score']
+    test_data[COL_NAME] = test_data['math score'] + test_data['reading score'] + test_data['writing score']
 
     return (
         train_data,
