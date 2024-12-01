@@ -9,6 +9,7 @@ from src.components.data_ingestion import DataIngestion
 from src.components.data_preprocessing import DataPreprocessing
 from src.components.model_trainer import ModelTrainer
 from src.components.model_evaluation import ModelEvaluation
+from src.components.hyperparameter_tuning import HyperParameterTuning
 
 logger = get_logger('training_pipeline')
 
@@ -44,6 +45,12 @@ def training_pipeline():
 
     #Start Evaluating and gives us best model
     model_evaluate.evaluate(X_train, X_test, y_train, y_test, trained_models)
+
+    #? HyperParameter Tuning
+    hyperparameter_tunning = HyperParameterTuning()
+    tuned_model_scores = hyperparameter_tunning.initiate_tuning(X_train, X_test, y_train, y_test)
+
+    print('Tuned Model Scores: ', tuned_model_scores)
 
     logger.info('Pipeline Completed')
 
