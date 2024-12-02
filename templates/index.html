@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Performance Predictor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        .feature-box {
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+            background: white;
+            transition: transform 0.3s ease;
+        }
+        .feature-box:hover {
+            transform: translateY(-5px);
+        }
+        .cta-button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            background: #764ba2;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .cta-button:hover {
+            background: #667eea;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-4">Student Performance Predictor</h1>
+            <p class="lead mb-4">Leveraging Machine Learning to Predict Academic Success</p>
+            <a href="/form" class="btn btn-light cta-button">Try Prediction</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto text-center mb-5">
+                <h2 class="mb-4">About Our Project</h2>
+                <p class="lead">Our machine learning model analyzes various student parameters to predict their total academic score, helping educators and students make data-driven decisions.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h3>Accurate Predictions</h3>
+                    <p>Using advanced ML algorithms to provide precise performance predictions based on historical data.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h3>Multiple Factors</h3>
+                    <p>Considers various parameters including study habits, previous scores, and demographic factors.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-box">
+                    <h3>Instant Results</h3>
+                    <p>Get immediate predictions to help make informed decisions about academic interventions.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <h3 class="mb-4">Ready to Predict Student Performance?</h3>
+            <a href="/form" class="btn btn-primary cta-button">Start Prediction</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© 2024 Student Performance Predictor. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

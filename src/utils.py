@@ -36,3 +36,18 @@ def create_column(train_data, test_data):
         train_data,
         test_data
     )
+
+def load_model(file_path):
+    try:
+        logger.info('Opening Model')
+
+        with open(file_path, 'rb') as f:
+            model = dill.load(f)
+
+        logger.info('Model Loaded')
+
+        return model
+    
+    except Exception as e:
+        logger.error(e)
+        raise CustomException(e, sys)
