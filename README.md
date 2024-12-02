@@ -1,1 +1,32 @@
-# **This is our ML Project which is Construct Using Moduler Approach**
+# Student Total Score Predictor
+
+This repository contains a **Student Total Score Application** built using **Machine Learning (ML)**. The application uses a **Flask** web framework to provide a user interface for predicting Student Score based on input data. Additionally, the project is Soon become containerized using **Docker** for ease of deployment and portability.
+
+---
+
+## Features
+- **Machine Learning**: The application utilizes trained ML models.
+- **Flask Web Application**: A simple and user-friendly interface for making predictions.
+
+---
+
+## How to Use
+
+### **Clone the Repository**
+```bash
+git clone https://github.com/anonymous298/End-To-End-ML.git
+```
+
+## Run Locally
+
+### 1. Install Dependencies
+- Make sure you have Python installed. Then install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run the Flask Application
+```bash
+python app.py
+```
+3. Open your browser and navigate to http://localhost:8080.
