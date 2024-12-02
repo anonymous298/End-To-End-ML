@@ -30,3 +30,16 @@ pip install -r requirements.txt
 python app.py
 ```
 3. Open your browser and navigate to http://localhost:8080.
+
+## **About Me**  
+
+Hi! I'm [Talha](https://github.com/anonymous298), a passionate developer and tech enthusiast focused on building impactful projects. I specialize in **AI/ML**, and crafting efficient solutions for complex problems.  
+
+### **Skills**  
+- 🧠 Artificial Intelligence & Machine Learning  
+- 💻 Web Development (Frontend & Backend)  
+- 📊 Data Analysis & Visualization  
+
+### **Connect with Me**  
+- [GitHub](https://github.com/anonymous298)  
+- [LinkedIn](https://linkedin.com/in/muhmmad-talha937/)
