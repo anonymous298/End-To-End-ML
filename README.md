@@ -4,6 +4,12 @@ This repository contains a **Student Total Score Application** built using **Mac
 
 ---
 
+![1](https://github.com/user-attachments/assets/ee93659d-0105-449c-9c82-8502ad53517b)
+---
+![2](https://github.com/user-attachments/assets/40d94d02-1d89-4de4-a5ac-c7504038bb9b)
+
+---
+
 ## Features
 - **Machine Learning**: The application utilizes trained ML models.
 - **Flask Web Application**: A simple and user-friendly interface for making predictions.
